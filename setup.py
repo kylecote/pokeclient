@@ -1,8 +1,6 @@
 from setuptools import setup, find_packages
-
-
 setup(
-    name="pokeapi-sdk",
+    name="pokeapi",
     version="0.1",
     description="A simple SDK for the PokeAPI",
     package_dir={"":"app"},

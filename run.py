@@ -1,5 +1,6 @@
-from poke import PokeClient
+from pokeapi import(
+    get_pokemon,
+    get_generation
+)
 
-client = PokeClient()
-client.get_pokemon(name="pikachu")
-
+print(get_pokemon(name="pikachu"))
