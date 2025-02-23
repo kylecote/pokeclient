@@ -1,8 +1,5 @@
 # PokeAPI SDK
 The following contains src, setup & install instructions for the PokeAPI SDK.
-# TODO
-+ Add endpoints Generation
-+ Build out GenerationResponse
 
 # Setup, Build & Installation, and Testing
 ## Setup
@@ -23,11 +20,13 @@ python setup.py bdist_wheel sdist
 pip install .
 ```
 
-## Running Tests
+## Running Quick Tests
 ```
 #You can see tests by running
 python run.py
 ```
+## Assumptions
+get_pokemon_by_name_or_id and get_pokemon with get_generation and get_generation_by_name_or_id could probably switch to a factor pattern of sorts to clear up some re-use but just wanted to get through the problem.
 
 ### Prompt Requirements
 + Please ensure to include a README file alongside your SDK for user guidance.

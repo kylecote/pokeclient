@@ -70,6 +70,8 @@ class Pokemon:
                 self.moves = moves
                 self.name = name
                 self.order = order
+                self.past_abilities = past_abilities
+                self.past_types = past_types
                 self.species = species
                 self.sprites = sprites
                 self.stats = stats
@@ -77,13 +79,12 @@ class Pokemon:
                 self.weight = weight
     
     def __repr__(self):
-        print(f"Pokemon: {self.name} {self.id}")
+        return f"Pokemon({self.name}) id({self.id}) height({self.height}) weight({self.weight}) base_experience({self.base_experience}) abilities({self.abilities}) stats({self.stats}) types({self.types}" 
 
 class PokemonListResultResponse:
     def __init__(self, count=0, next=..., previous=..., results=List[ObjectReference]):
         self.count = count
         self.results = results
-    
-    def __repr__(self):
-         print(f"PokemonListResultResponse: {self.count} {self.results}")
 
+    def __repr__(self):
+         return f"PokemonListResultResponse: {self.count} {self.results}"
