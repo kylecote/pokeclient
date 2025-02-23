@@ -1,23 +1,28 @@
 
 import requests
-import json
+from typing import Optional
+from .Util import PageCursor
+from .Pokemon import Pokemon, PokemonListResultResponse
 
-API_VERSION = 2
-BASE_URI = f"https://pokeapi.co/api/v{API_VERSION}"
+BASE_URI = f"https://pokeapi.co/api/v2"
 
-def get_pokemon(name=..., id=...):
-    if name == ... and id == ...:
-        raise ValueError("You must provide either a 'name' or an 'id'")
-    
-    searchArg = name if name != ... else id
-    response = requests.get(f"{BASE_URI}/pokemon/{searchArg}")
-    return json.loads(response.text)
-    
-    
-def get_generation(name=..., id=...):
-    if name == ... and id == ...:
-        raise ValueError("You must provide either a 'name' or an 'id'")
-    
-    searchArg = name if name != ... else id
-    response = requests.get(f"{BASE_URI}/generation/{searchArg}")
-    return json.loads(response.text)
+
+class PokeClient:
+    def __init__(self):
+        pass
+
+    def get_pokemon_by_name_or_id(name: Optional[str] = None, id: Optional[int] = None) -> Pokemon:
+        searchArg = name if name is not None else id if id is not None else ""
+        if searchArg == "":
+            raise ValueError("You must provide either a 'name' or an 'id'")
+        response = requests.get(f"{BASE_URI}/pokemon/{searchArg}")
+        if not response.ok:
+            raise requests.exceptions.HTTPError(response.text)
+        return Pokemon(**response.json())
+
+    def get_pokemon(pageCursor: PageCursor) -> PokemonListResultResponse:
+        response = requests.get(f"{BASE_URI}/pokemon/",params={"offset":pageCursor.offset, "limit":pageCursor.limit})
+        if not response.ok:
+            raise requests.exceptions.HTTPError(response.text)
+        pageCursor.getNextPage(response.json()["next"] is not None)
+        return PokemonListResultResponse(**response.json())

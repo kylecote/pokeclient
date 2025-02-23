@@ -1,5 +1,9 @@
 # PokeAPI SDK
 The following contains src, setup & install instructions for the PokeAPI SDK.
+# TODO
++ Add endpoints Generation
++ Build out GenerationResponse
+
 # Setup, Build & Installation, and Testing
 ## Setup
 ```

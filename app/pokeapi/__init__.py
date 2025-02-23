@@ -1,4 +1,11 @@
-from .src.PokeClient import (
+from .src.PokeClient import (PokeClient)
+from .src.Pokemon import (
     get_pokemon,
-    get_generation
+    get_pokemon_by_name_or_id,
+    Pokemon,
+    PokemonListResultResponse,
+    Ability,
+    Move,
+    Types,
+    Stat
 )
