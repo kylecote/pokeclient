@@ -75,6 +75,9 @@ class Pokemon:
                 self.stats = stats
                 self.types = types
                 self.weight = weight
+    
+    def __repr__(self):
+        print(f"Pokemon: {self.name} {self.id}")
 
 class PokemonListResultResponse:
     def __init__(self, count=0, next=..., previous=..., results=List[ObjectReference]):

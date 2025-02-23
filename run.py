@@ -1,17 +1,19 @@
 from pokeapi import PokeClient, PageCursor
 
 pokeClient = PokeClient()
-get_pokemon_by_name_or_id = pokeClient.get_pokemon_by_name_or_id()
-get_pokemon = pokeClient.get_pokemon()
+try:
+    getbyIdExcept = pokeClient.get_pokemon_by_name_or_id()
+except ValueError as e:
+    print(e)
 
-getByIdResult = get_pokemon_by_name_or_id(id=1)
+getById1 = pokeClient.get_pokemon_by_name_or_id(id=1)
+print(getById1)
 
-getByNameResult = get_pokemon_by_name_or_id(name="bulbasaur")
+getByName = pokeClient.get_pokemon_by_name_or_id(name="charmander")
+print(getByName)
+
 pageCursor = PageCursor()
 while pageCursor:
     print(pageCursor.hasNext)
-    result = get_pokemon(pageCursor)
-    for pokemon in result.results:
-        print(f"Pokemon: {pokemon.name}")
-    if not pageCursor.getNextPage():
-        break
+    result = pokeClient.get_pokemon(pageCursor)
+    print(result)
