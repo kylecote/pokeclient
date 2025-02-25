@@ -9,6 +9,6 @@ setup(
         "requests >= 2.32.3"],
     author="Kyle Cote",
     author_email="kylecote@gmail.com",
-    url="https://github.com/kylecote/speakeasy-assesment",
+    url="https://github.com/kylecote/pokeclient",
     python_requires=">=3.10"
 )
